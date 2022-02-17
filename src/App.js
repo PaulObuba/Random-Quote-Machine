@@ -1,6 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import './App.css';
 import colorArray from './arrayOfColors'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+library.add(faTwitter)
 
 function App() {
    const [quote, setQuote] = useState(['Happiness is not something readymade. It comes from your own actions.']);
@@ -29,11 +33,13 @@ function App() {
     <div className="App">
       <header className="App-header" style={{backgroundColor: colors, color: colors}}>
         <div id='quote-box'>
-          <h3 id='text'> {quote[random].quote} </h3>
+          <p id='text'> {quote[random].quote} </p>
           <p id='author'> - {quote[random].author} </p>
           <div id='button'>
-            <a href={encodeURI(`http://www.twitter.com/intent/tweet?text=${quote[random].quote}`)} id='tweet-quote'  style={{backgroundColor: colors}}>tweet-quote</a>
-            <button id='new-quote' onClick={setRandomNumber} style={{backgroundColor: colors}}>New Quote</button>
+            <a href={encodeURI(`http://www.twitter.com/intent/tweet?text=${quote[random].quote}`)} id='tweet-quote'  style={{backgroundColor: colors}}>
+             <FontAwesomeIcon icon={["fab", "twitter"]} />
+            </a>
+            <button id='new-quote' onClick={setRandomNumber} style={{backgroundColor: colors}}>New quote</button>
           </div>
         </div>
         <p id='name'>- by paul</p>
@@ -41,5 +47,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
