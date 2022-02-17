@@ -1,22 +1,42 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react'
 import './App.css';
+import colorArray from './arrayOfColors'
 
 function App() {
+   const [quote, setQuote] = useState(['Happiness is not something readymade. It comes from your own actions.']);
+   const [random, setRandom] = useState(0);
+   const [colors, setColors] = useState(' #282c34')
+
+   const fetchQuotes = () => {
+     fetch('https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json')
+     .then(response => response.json())
+     .then(data => setQuote(data.quotes))
+     .catch(error => console.log(error))
+   }
+
+    useEffect(() => {
+      fetchQuotes()
+    }, [])
+  
+    const setRandomNumber = () => {
+      const ran = Math.floor(Math.random() * quote.length)
+      setRandom(ran)
+      setColors(colorArray[ran])
+    }  
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="App-header" style={{backgroundColor: colors, color: colors}}>
+        <div id='quote-box'>
+          <h3 id='text'> {quote[random].quote} </h3>
+          <p id='author'> - {quote[random].author} </p>
+          <div id='button'>
+            <a href={encodeURI(`http://www.twitter.com/intent/tweet?text=${quote[random].quote}`)} id='tweet-quote'  style={{backgroundColor: colors}}>tweet-quote</a>
+            <button id='new-quote' onClick={setRandomNumber} style={{backgroundColor: colors}}>New Quote</button>
+          </div>
+        </div>
+        <p id='name'>- by paul</p>
       </header>
     </div>
   );
