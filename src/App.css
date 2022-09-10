@@ -13,26 +13,26 @@
   color: white;
 }
 
-#quote-box {
+.quote-box {
   background-color: white;
   border-radius: 5px;
   padding: 10px 20px 40px 20px;
-  width: 40%;
+  width: 50%;
 }
 
-#text {
-  font-family: 'Raleway', sans-serif;
+.text {
+  font-family: "Raleway", sans-serif;
   font-size: 35px;
 }
 
-#author {
+.author {
   font-family: monospace;
   font-size: 20px;
   text-align: end;
   margin-right: 25px;
 }
 
-#tweet-quote {
+.tweet-quote {
   color: white;
   float: left;
   text-decoration: none;
@@ -41,7 +41,7 @@
   margin-left: 25px;
 }
 
-#new-quote {
+.new-quote {
   color: white;
   border: none;
   border-radius: 4px;
@@ -51,13 +51,19 @@
   cursor: pointer;
 }
 
-#button {
+.button {
   display: flex;
   justify-content: space-between;
   min-hight: 20px;
 }
 
-#name {
+.name {
   font-size: 15px;
   color: white;
+}
+
+@media only screen and (max-width: 960px) {
+  .quote-box {
+    width: 80%;
+  }
 }

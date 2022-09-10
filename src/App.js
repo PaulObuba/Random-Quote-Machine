@@ -32,19 +32,21 @@ function App() {
   return (
     <div className="App">
       <header className="App-header" style={{backgroundColor: colors, color: colors}}>
-        <div id='quote-box'>
-          <p id='text'> {quote[random].quote} </p>
-          <p id='author'> - {quote[random].author} </p>
-          <div id='button'>
-            <a href={encodeURI(`http://www.twitter.com/intent/tweet?text=${quote[random].quote}`)} id='tweet-quote'  style={{backgroundColor: colors}}>
+        <div className='quote-box'>
+          <p className='text'> {quote[random].quote} </p>
+          <p className='author'> - {quote[random].author} </p>
+          <div className='button'>
+            <a href={encodeURI(`http://www.twitter.com/intent/tweet?text=${quote[random].quote}`)} className='tweet-quote'  style={{backgroundColor: colors}}>
              <FontAwesomeIcon icon={["fab", "twitter"]} />
             </a>
-            <button id='new-quote' onClick={setRandomNumber} style={{backgroundColor: colors}}>New quote</button>
+            <button className='new-quote' onClick={setRandomNumber} style={{backgroundColor: colors}}>New quote</button>
           </div>
         </div>
-        <p id='name'>- by paul</p>
+        <p className='name'>- by paul</p>
       </header>
     </div>
   );
 }
-export default App;
+export default App; 
+
+
